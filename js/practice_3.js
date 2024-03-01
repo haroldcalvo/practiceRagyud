@@ -623,51 +623,63 @@ console.log(typeof myFunction);
 console.log(myFunction);
 
 */
-let PlayerStatus = (function(){
-  let age = 18;
-  let ClassType = 'Any';
-  let hit = 0
-  let Player ={ 
-    Status : {
-      health : 400,
-      mana : 200,
-      level : 1 ,
-      job : "None",
-    },
-    Equipment : {
-      weapon :{
-        name: 'wooden sword',
-        damage: 10,
-        level: 1
-      },
-      head : 'wooden helm',
-      guanlet : 'wooden guanlet',
-      boots : 'wooden boots',
-      armor : 'wooden armor',
-      pouldron : 'wooden pouldron'
-    }
-  }
-  console.log('Welcome to the world of Sword Art Online');
-  function viewEquipment (){
-    let weapon = Player.Equipment.weapon;
-    console.log(`Select an equipment to view`);
-    console.log("Weapon:");
-    let EquipmentList = $('<ul>');
-    $.each(Player,function(index , PlayerInfo){
-      EquipmentList.append(`<li>${index}: ${PlayerInfo}`);
-    })
-    $('.ViewEquipemnt').append(EquipmentList);
-  }viewEquipment();
-    function Attack(hit){
-      console.log(`You just hit the monster`); 
-      let damageDealth = Math.random() * hit;
-      return damageDealth;
-  }
+// let PlayerStatus = (function(){
+//   let age = 18;
+//   let ClassType = 'Any';
+//   let hit = 0
+//   let Player ={ 
+//     Status : {
+//       health : 400,
+//       mana : 200,
+//       level : 1 ,
+//       job : "None",
+//     },
+//     Equipment : {
+//       weapon :{
+//         Name: 'wooden sword',
+//         Damage: 10,
+//         Level: 1
+//       },
+//       head : 'wooden helm',
+//       guanlet : 'wooden guanlet',
+//       boots : 'wooden boots',
+//       armor : 'wooden armor',
+//       pouldron : 'wooden pouldron'
+//     }
+//   }
+//   console.log('Welcome to the world of Sword Art Online');
+//   function viewEquipment() {
+//     let weapon = Player.Equipment.weapon;
+//     console.log(`Select an equipment to view`);
+//     console.log("Weapon:");
+//     let EquipmentList = $('<div>');
+
+//     let weaponString = '';
+
+//     // Iterate over the properties of the weapon object using $.each()
+//     $.each(weapon, function(prop, value) {
+//         // Concatenate the property and value to the string
+//         weaponString += `${prop}: ${value}, <br>`;
+//     });
+
+//     // Remove the trailing comma and space
+//     weaponString = weaponString.slice(0, -2);
+
+//     EquipmentList.append(`Weapon: <br> ${weaponString}`);
+//     $('.ViewEquipemnt').append(EquipmentList);
+// }
+// viewEquipment();
+
+//     function Attack(hit){
+//       console.log(`You just hit the monster`); 
+//       let damageDealth = Math.random() * hit;
+//       return damageDealth;
+//   }
       let hitpoints = 100;
       // // let damage = Attack(hitpoints);
       // console.log(`You just dealth ${damage}`);
-})
-();
+// })
+// ();
 
 // let originalCar = (function(){
 //   print('hatdog');

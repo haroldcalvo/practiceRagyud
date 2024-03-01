@@ -46,9 +46,9 @@
 // function invocator     ()
 
 
-// -- arrays
-let intSeriesOfNumbers = [ 10, 20, 30, 40, 50 ];
-let strListOfNames = ['Pedro', 'Kulas', 'Maria', 'Juan', 'Petra'];
+// // -- arrays
+// let intSeriesOfNumbers = [ 10, 20, 30, 40, 50 ];
+// let strListOfNames = ['Pedro', 'Kulas', 'Maria', 'Juan', 'Petra'];
 
 // console.log(intSeriesOfNumbers);
 // console.log(intSeriesOfNumbers[2]);
