@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Subscriber Management</title>
+</head>
+<body>
+<select id="subscriberSelect" onchange="populateTable()">
+  <option value="">Select Subscriber</option>
+  <option value="Harold">Harold</option>
+  <option value="Medy">Medy</option>
+  <option value="James">James</option>
+</select>
+
+<table id="subscriberTable">
+  <thead>
+    <tr>
+      <th>Application</th>
+      <th>Dimension</th>
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>
+
+<script>
+const subscriber_management = [
+  {
+    "subscriber_user": "Harold",
+    "id": 0,
+    "data": {
+      "Application": [
+        "Fund",
+        "Account Payable",
+        "Account Receivable"
+      ],
+      "Dimension": [
+        "Dimension 1",
+        "Dimension 2",
+        "Dimension 3"
+      ]
+    }
+  },
+  {
+    "subscriber_user": "Medy",
+    "id": 1,
+    "data": {
+      "Application": [
+        "Fund",
+        "Account Payable",
+        "Account Receivable"
+      ],
+      "Dimension": [
+        "Dimension 1",
+        "Dimension 2",
+        "Dimension 3"
+      ]
+    }
+  },
+  {
+    "subscriber_user": "James",
+    "id": 2,
+    "data": {
+      "Application": [
+        "Fund",
+        "Account Payable",
+        "Account Receivable"
+      ],
+      "Dimension": [
+        "Dimension 1",
+        "Dimension 2",
+        "Dimension 3"
+      ]
+    }
+  }
+];
+
+function populateTable() {
+  const subscriberSelect = document.getElementById("subscriberSelect");
+  const selectedSubscriber = subscriberSelect.value;
+  
+  const selectedSubscriberData = subscriber_management.find(subscriber => subscriber.subscriber_user === selectedSubscriber);
+  
+  const subscriberTableBody = document.getElementById("subscriberTable").getElementsByTagName("tbody")[0];
+  
+  // Clear previous data
+  subscriberTableBody.innerHTML = "";
+  
+  if (selectedSubscriberData) {
+    const maxRows = Math.max(selectedSubscriberData.data.Application.length, selectedSubscriberData.data.Dimension.length);
+    for (let i = 0; i < maxRows; i++) {
+      const row = subscriberTableBody.insertRow();
+      const applicationCell = row.insertCell();
+      const dimensionCell = row.insertCell();
+      applicationCell.innerText = selectedSubscriberData.data.Application[i] || "";
+      dimensionCell.innerText = selectedSubscriberData.data.Dimension[i] || "";
+    }
+  }
+}
+
+</script>
+</body>
+</html>
