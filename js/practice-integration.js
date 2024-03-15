@@ -57,51 +57,37 @@ $(document).ready(function(){
 
   })
   $('#SelectOpt').change(function(){
-    // $('#tableBody').empty();
-    let selectedOption = $('#SelectOpt option:selected');
-    if(selectedOption.text() === "Harold"){
-      console.log("Option 1 is selected");
-      let applicationTab =  subscriber_management[0].data.Application;
-      let dimensionTab =  subscriber_management[0].data.Dimension;
-      let dimensionEle = '';
-      $.each(applicationTab ,function(i , applicationVal){
-        let tableRow = $('<tr>');
-        let appTd = $('<td>').text(applicationVal);
-        $(tableRow).append(appTd);
-        $('#tableBody').append(tableRow);
-      })
-    //   $.each(dimensionTab ,function(i , dimensionVal){
-    //     dimensionEle += `<option value="${i+1}">${dimensionVal}</option>`;
-    //   })
-    //  let getDimension = `
-    //   <tr class="appendHere text-center">
-    //     <td></td>
-    //       <td>
-    //         <div class="col-md-7 offset-md-3 mr-auto ml-auto">
-    //           <div class="col-sm-12">
-    //             <select name="selectSm" id="SelectApp"
-    //               class="text-center form-control-sm form-control">
-    //               <option value="0">Select Dimension</option>
-    //               ${dimensionEle}
-    //             </select>
-    //           </div>
-    //         </div>
-    //       </td>
-    //   </tr>
-    //   `;
-      
-    //   $('#tableBody').append(getDimension);
-   
-    }else if (selectedOption.text() === "Medy"){
-
-
-    }else if (selectedOption.text() === "James"){
-
+    $('#tableBody').empty();
+    let selectedOption = $('#SelectOpt option:selected').text();
+    console.log("Selected option:", selectedOption);
+    
+    let subscriberData = subscriber_management.find(subscriber => subscriber.subscriber_user === selectedOption);
+    
+    if(subscriberData) {
+        let applicationTab = subscriberData.data.Application;
+        let dimensionTab = subscriberData.data.Dimension;
+        
+        // Loop through each application and dimension
+        for(let i = 0; i < applicationTab.length; i++) {
+            let applicationValue = applicationTab[i];
+            let dimensionValue = dimensionTab[i];
+            
+            let tableRow = $('<tr>');
+            
+            // Populate application value
+            let appTd = $('<td>').text(applicationValue);
+            tableRow.append(appTd);
+            
+            // Populate dimension value
+            let dimTd = $('<td>').text(dimensionValue);
+            tableRow.append(dimTd);
+            
+            $('#tableBody').append(tableRow);
+        }
+    } else {
+        console.log("Subscriber not found.");
     }
-    else{
-      return false;
-    }
-  });
+});
 
 
 
